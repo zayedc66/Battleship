@@ -2,18 +2,80 @@
 #2/8/2023
 #Battleship
 #spot=["o"]*25
-import os
+import os, random, time
 spot=[]
-i=1 
-while i<=25:
-    spot.append("🌊")
-    spot.append("🌊")
-    spot.append("🌊")
-    spot.append("🌊")
-    spot.append("🌊")
-    i+=1
-#HIDDEN_BOARD=[['']*5 for x in range(5)] 
-#GUESS_BOARD=[['']*5 for x in range(5)] 
+def start_game():
+    spot=[]
+    i=1 
+    while i<=25:
+        spot.append("🌊")
+        spot.append("🌊")
+        spot.append("🌊")
+        spot.append("🌊")
+        spot.append("🌊")
+        i+=1
+    return spot
+
+
+def place_ships():
+    ships=["M"]*25
+    ship_1=random.randint(1,11)
+    ship_2=random.randint(1,11)
+    while ship_1 ==ship_2:
+        ship_2=random.randint(1,11)
+    if ship_1 ==1 or ship_2==1:
+        ships[0]="M"
+        ships[1]="M"
+    if ship_1 ==2 or ship_2==2:
+        ships[5]="M"
+        ships[10]="M"
+    if ship_1 ==2 or ship_2==2:
+        ships[10]="M"
+        ships[15]="M"    
+    if ship_1 ==2 or ship_2==2:
+        ships[15]="M"
+        ships[20]="M"
+    if ship_1 ==2 or ship_2==2:
+        ships[20]="M"
+        ships[25]="M"
+    return ships 
+            
+def display_board():
+    i=0
+    row=1
+    print("|      A      B      C      D      E  |")
+    print("|-------------------------------------|")
+    while i<25:
+        print(f"|{row} |   {spot[i]}  |  {spot[i+1]}  |  {spot[i+2]}  |  {spot[i+3]}  |  {spot[i+4]}|")
+        i+=5
+        row+=1
+        
+def garbage_input():
+    print("Bad Input")
+    time.sleep(2)
+
+
+
+spot=start_game()
+ships=place_ships()
+run=True
+while run:
+    display_board()
+    guess=input("Enter a coordinate(letter, number): ").upper()
+    if len(guess)<1:
+        garbage_input()
+    elif guess=="N":
+        spot=start_game()
+        ships=place_ships()
+    elif guess=="Q":
+        run=False
+        print("Thank you for playing!!")
+        time.sleep(2)
+    elif not guess[1].isnumeric:
+        #continue here tmr
+    print(guess)
+    os.system("cls")
+'''
 run=True
 while run:
     i=0
@@ -75,6 +137,7 @@ while run:
     if guess=="E4":
         spot[23]="💨"
     if guess=="E5":
-        spot[24]="💨"
+        spot[24]="💨" 
     print(guess)
     os.system("cls")
+'''
