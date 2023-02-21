@@ -19,6 +19,7 @@ def start_game():
         i+=1
     return spot
 
+#no?
 
 def place_ships():
     ships=["💨"]*25
