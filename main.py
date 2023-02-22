@@ -119,6 +119,7 @@ try:
                 if letter == "e":
                     start = 4
                 if ord(guess[0])>=65 and ord(guess[0])<=69:
+                    #returns a readable version of any object
                     start=ord(guess[0])-65
                     spot[start+(int(guess[1])-1)*5]=ships[start+(int(guess[1])-1)*5]
                     if spot[start+(int(guess[1])-1)*5]=="💥":
