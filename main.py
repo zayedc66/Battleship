@@ -20,7 +20,7 @@ def start_game():
     return spot
 
 #no?
-
+#sets spots as ths ships randomly. Default miss is the smoke emoji
 def place_ships():
     ships=["💨"]*25
     ship_1=random.randint(1,11)
@@ -62,6 +62,8 @@ def place_ships():
         ships[17]="💥"
     return ships 
             
+    
+    #method to set borders and overall layout
 def display_board():
     i=0
     row=1
@@ -74,7 +76,7 @@ def display_board():
     print("|-------------------------------------|")
     print("Welcome to battleship! Enter a key, press N for new game, or press Q to quit")
           
-        
+        #if this method is ever run, it is to 
 def garbage_input():
     print("Bad Input")
     time.sleep(2)
@@ -132,8 +134,6 @@ try:
                          print('You Lost')  
                          run=False      
                         time.sleep(1)
-                    if spot== "24":
-                        print("lol")
                     turn=turn+1
             print(guess)     
         os.system("cls")
