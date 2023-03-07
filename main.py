@@ -25,6 +25,8 @@ def place_ships():
     ships=["💨"]*25
     ship_1=random.randint(1,11)
     ship_2=random.randint(1,11)
+    print(ship_1)
+    print(ship_2)
     while ship_1 ==ship_2:
         ship_2=random.randint(1,11)
     if ship_1 ==1 or ship_2==1:
@@ -117,7 +119,7 @@ try:
                 if letter == "d":
                     start = 3
                 if letter == "e":
-                    start = 4
+                    start = 4 
                 if ord(guess[0])>=65 and ord(guess[0])<=69:
                     #returns a readable version of any object
                     start=ord(guess[0])-65
@@ -126,13 +128,13 @@ try:
                         print("HIT!!")
                         ships_left=ships_left-1
                         if ships_left==0:
-                            print("You won")
+                            print("You won!!!")
                             run=False
                         time.sleep(1)
                     if spot[start+(int(guess[1])-1)*5]=="💨":
                         print("Miss")  
                         if turn >10:
-                         print('You Lost')  
+                         print("You Lost")  
                          run=False      
                         time.sleep(1)
                     turn=turn+1
