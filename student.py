@@ -1,32 +1,81 @@
 #student averages program
 #Program by Zayed
 #Date: 2 / 21 / 2023
-import os
-import time
+import os, time
+#for catching any misinputs 
+#try
 try:    
-    Students=[["John","Doe","Passed",80.0,79.0,83.0,72.0,78.5],["Jane","Doe","Passed",83.0,95.0,92.0,94.0,91],["George","Python","Failed",37.0,23.0,51.0,46.0,39.3],["Luke","Skywalker","Passed",19.0,77.0,80.0,83.0,64.8],["Teerth","Panchal","Failed",5.0,15.0,13.0,7.0,10.0]]
     menu = True
     start = False
     add = False
-    try:        
+    list_stud = False
+    Course_avg = False
+    login = False
+    Students=[["Tyteth","Bob","Pass",80,70,83,72,78],["Leslie", "Jone", "Pass",95,90,93,89,75],["Rock", "Coop", "Fail",84,28,39,21],["Maria", "Silva", "Pass",84,59,71,91,58],["Aaliyah","Rob","Fail",48,29,57,29,59]]
+    wel_msg = "Welcome to The application\n"
+    while login == False:
+            start = True
+            login = True
+    while start == True:  
+        while menu == True:
+            os.system('cls')
+            print("\nWelcome to Student Grades Program \n\n-----------------------------------\n1)Add Student to list \n2)List Students + Student Average \n3)Course Average\n4)Exit Program\n-----------------------------------")
+            try:  
+                menu_sel = (input("\nEnter 1,2,3 or 4 : "))
+                menu_sel=int(menu_sel)
+                if menu_sel == 1:   
+                    add = True
+                    menu = False
+                elif menu_sel == 2:
+                    list_stud = True
+                    menu = False
+                elif menu_sel == 3:
+                    Course_avg = True
+                    menu = False
+                elif menu_sel == 4:
+                    os.system('cls')
+                    menu = False
+                    start = False
+                else:
+                    os.system('cls')
+                    print(menu_sel,"is not a valid menu option")
+                    time. sleep(2)        
+            except Exception as e:
+                os.system('cls')
+                if not menu_sel == "4":
+                    print(menu_sel,"is not a valid menu option")
+                time. sleep(2)
+                os.system('cls')    
+        while add == True:
+            os.system('cls')
+            print("\nAdding student \n")
+            f_name = input("Student First Name: ")
+            l_name = input("Student Last Name: ")
+            os.system('cls')    
+            valid=False
+            mrks = True
+            while mrks == True:    
+                os.system('cls')
+                print("Now you will enter the marks for tests 1-4")
+                try:        
                     MATH = float(input("MATH mark %: "))
                     ENGLISH = float(input("ENGLISH mark %: "))
                     HISTORY = float(input("HISTORY mark %: "))
                     GYM = float(input("GYM mark %: "))
                     valid=True
-    except:
+                except:
                     os.system('cls') 
                     valid=False
                     print("please enter marks in numerical format, ##.# or ##")
                     time.sleep(2)
-    if valid == True and MATH in range(0,100) and ENGLISH in range(0,100) and HISTORY in range(0,100) and GYM in range(0,100):
+                if valid == True and MATH in range(0,100) and ENGLISH in range(0,100) and HISTORY in range(0,100) and GYM in range(0,100):
                     os.system('cls')
                     student_avg = (MATH + ENGLISH + HISTORY + GYM)/4
                     if student_avg >= 50:
                         passed = "Passed"
                     elif student_avg < 50:
                         passed = "Failed"             
-                        print(f_name,l_name,passed,"with an overall mark of: ",student_avg,"%" )
+                    print(f_name,l_name,passed,"with an overall mark of: ",student_avg,"%" )
                     confirm = input("Enter 'Y' to add student to database OR Enter 'N' to cancel (will return you to menu!): ").upper()
                     if confirm == "Y":
                         confirm = True
@@ -94,9 +143,41 @@ try:
             English_avg = 0
             History_avg = 0
             Gym_avg = 0
-            time.sleep(2)                       
-        except:
-        print("not a valid selection")            
+            try:
+                print("Math----------> 1)\nEnglish-------> 2)\nHistory-------> 3)\nGym-----------> 4)\nAll Courses---> 5)\n")
+                course_sel = int(input("Which course do you want to find the average for?: ")) 
+                os.system('cls')               
+                for row in Students:
+                        Math_avg += row[3] 
+                for row in Students:
+                        English_avg += row[4]
+                for row in Students:    
+                        History_avg += row[5]
+                for row in Students:   
+                        Gym_avg += row[6]
+                if course_sel >= 1 and course_sel <=5:
+                    if course_sel == 1:                               
+                        print(f"Math Average: {Math_avg // len(Students)} %")
+                    elif course_sel == 2:                        
+                        print(f"English Average: {English_avg // len(Students)} %")
+                    elif course_sel == 3:                        
+                        print(f"History Average: {History_avg // len(Students)} %")
+                    elif course_sel == 4:                        
+                        print(f"Gym Average: {Gym_avg // len(Students)} %")
+                    elif course_sel == 5:
+                        print(f"Math Average: {Math_avg // len(Students)} %")
+                        print(f"English Average: {English_avg // len(Students)} %")
+                        print(f"History Average: {History_avg // len(Students)} %")
+                        print(f"Gym Average: {Gym_avg // len(Students)} %")
+                    time.sleep(2)
+                    moveon = input("Press any key to continue: ")
+                    Course_avg = False
+                    list_stud = True
+                else:
+                    print("Not in range of options....")
+                    time.sleep(2)                       
+            except:
+                print("not a valid selection")            
 except:
     print("PROGRAM ENDED")           
     
