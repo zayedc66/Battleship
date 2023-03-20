@@ -22,7 +22,7 @@ initiate = True
 def main():
     # intro print statement
     print("\nWelcome to Student Grades Program \n\n-----------------------------------\n1) Add Student to list (Calculates Student Average) \n2) List Students + Student Average \n3) Course Average\n4) Exit Program\n-----------------------------------")
-    user_input = int(input("Please input your desired option: "))
+    user_input = (input("Please input your desired option: "))
     check_user_input(user_input)
     #if type(user_input) == int:
     #     num = int(user_input)
@@ -33,17 +33,17 @@ def main():
 #parentheses tell Python to execute the named function rather than just refer to the function    
 def check_user_input(user):
         match user:
-            case 1:
+            case "1":
                 add_student()
-            case 2:
+            case "2":
                 list_student()
-            case 3:
+            case "3":
                 course_average()
-            case 4:
+            case "4":
                 quit()
             case _:
                 try:
-                    user_input = int(input("Sorry, there seems to be a misinput. Retry: ")) 
+                    user_input = input("Sorry, there seems to be a misinput. Retry: ")
                     check_user_input(user_input)
                 except Exception as x:
                     print(x)
@@ -142,8 +142,8 @@ def course_average():
             x = 0
             for student in studentData:
                 x += student[courses.index(i) + 3]      
-            print (f"{i} avg: {x / studentData}") 
-            #len(studentData)
+            print (f"{i} avg: {x / len(studentData)}") 
+            len(studentData)
     back = input("Press any key to go back to menu...")
     main()
 
