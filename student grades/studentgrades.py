@@ -113,7 +113,6 @@ def course_average():
             for student in studentData:
                 x += student[courses.index(i) + 3]      
             print (f"{i} avg: {x / len(studentData)}") 
-            len(studentData)
     back = input("Press the enter key to go back to menu...")
     os.system('cls')
     main()
