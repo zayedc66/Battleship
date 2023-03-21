@@ -24,11 +24,7 @@ def main():
     print("\nWelcome to Student Grades Program \n\n-----------------------------------\n1) Add Student to list (Calculates Student Average) \n2) List Students + Student Average \n3) Course Average\n4) Exit Program\n-----------------------------------")
     user_input = (input("Please input your desired option: "))
     check_user_input(user_input)
-    #if type(user_input) == int:
-    #     num = int(user_input)
-    #     check_user_input(num)
-    #else:
-    #     print("misinpit")
+    
     
 #parentheses tell Python to execute the named function rather than just refer to the function    
 def check_user_input(user):
@@ -47,15 +43,7 @@ def check_user_input(user):
                     check_user_input(user_input)
                 except Exception as x:
                     print(x)
-                '''os.system('cls')
-                print(user_input,"is not a valid menu option")
-                time. sleep(2)        
-    except Exception as e:
-                os.system('cls')
-                if not user_input == "4":
-                    print(user_input,"is not a valid menu option")
-                time. sleep(2)
-                os.system('cls') '''
+
 
 
 def add_student():
@@ -80,7 +68,7 @@ def add_student():
                     valid=False
                     print("please enter marks in numerical format, ##.# or ##")
                     time.sleep(2)
-                if valid == True and MATH in range(0,100) and ENGLISH in range(0,100) and HISTORY in range(0,100) and GYM in range(0,100):
+                if valid == True and MATH in range(0,101) and ENGLISH in range(0,101) and HISTORY in range(0,101) and GYM in range(0,101):
                     os.system('cls')
                     student_avg = (MATH + ENGLISH + HISTORY + GYM)/4
                     if student_avg >= 50:
@@ -88,38 +76,20 @@ def add_student():
                     elif student_avg < 50:
                         passed = "Failed"             
                     print(f_name,l_name,passed,"with an overall mark of: ",student_avg,"%" )
-                    confirm = input("Enter 'Y' to add student to database OR Enter 'N' to cancel (will return you to menu!): ").upper()
+                    confirm = input("Enter 'Y' to add student to database OR enter any other key to cancel (will return you to menu!): ").upper()
                     if confirm == "Y":
+                        print("Added!")
+                        time.sleep(2)
                         os.system('cls')
-                        studentData.append([f_name,l_name,passed,MATH,ENGLISH,HISTORY,GYM,student_avg ])
-                        main()
-                        os.system('cls')
+                        studentData.append([f_name,l_name,passed,MATH,ENGLISH,HISTORY,GYM,student_avg])
+                        mrks=False
                     else:
                         print("Student was not added to list..... Returning to main menu.....")
+                        time.sleep(2)
                         os.system('cls')
-                        main()
+                        mrks=False
+    main()
 
-    '''keepAdding = 1
-    first = input('Plz give first')
-    last = input('Plz give last')
-    status = input('Plz give first')
-    grades = input('Plz give grades').split(' ') 
-    while keepAdding == 1:
-        studentData.append([first,last,status, grades])
-        keepAdding = input('keep adding? n or y')'''
-        
-        
-
-
-'''def list_student():
-    for row in studentData:
-        print(f""" First Name:{row[0]}\n Last Name:{row[1]}\n {row[2]}\n 
-        MATH------>{row[3]}%\n 
-        ENGLISH--->{row[4]}%\n 
-        HISTORY--->{row[5]}%\n 
-        GYM------->{row[6]}%\n 
-        STUDENT AVERAGE--->{row[7]}%\n
-        ----------------------------""")'''
 
 def list_student():
     os.system('cls')
@@ -144,8 +114,10 @@ def course_average():
                 x += student[courses.index(i) + 3]      
             print (f"{i} avg: {x / len(studentData)}") 
             len(studentData)
-    back = input("Press any key to go back to menu...")
+    back = input("Press the enter key to go back to menu...")
+    os.system('cls')
     main()
+
 
 def quit():
     os.system('cls')    
