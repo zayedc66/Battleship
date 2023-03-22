@@ -112,6 +112,7 @@ def course_average():
             x = 0
             for student in studentData:
                 x += student[courses.index(i) + 3]      
+                #helps you find the index position of an element or an item in a string of characters or a list of items
             print (f"{i} avg: {x / len(studentData)}") 
     back = input("Press the enter key to go back to menu...")
     os.system('cls')
