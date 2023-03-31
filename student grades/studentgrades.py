@@ -109,8 +109,10 @@ def list_student():
 def course_average():
     courses = ["Math", "English", "History", "Gym"]
     for i in courses:
+        #store the integer value of the current position in the range of the for loop
             x = 0
             for student in studentData:
+                #allows us to loop a list
                 x += student[courses.index(i) + 3]      
                 #helps you find the index position of an element or an item in a string of characters or a list of items
             print (f"{i} avg: {x / len(studentData)}") 
