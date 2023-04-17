@@ -20,6 +20,8 @@ def start_game():
     return spot
 
 #no?
+
+
 #sets spots as ths ships randomly. Default miss is the smoke emoji
 def place_ships():
     ships=["💨"]*25
