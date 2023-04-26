@@ -3,8 +3,6 @@
 #Search and Sort
 
 import os, time, sys
-
-
 Names = ["Andrea", "Dylan", "Coltina", "Dawson", "Carter", "Zayed", "Hayden", "Owen", "Erik", "Gabe", "Christian", "Noah", "Theerth", "Sujen", "Thirn" ]
 
 # Selection sort in Python
@@ -78,7 +76,6 @@ def sort():
 
     
 def quit():
-    os.system('cls')    
     print("Application Shutting Down...")
     time.sleep(2)
     os.system('cls')    
@@ -115,4 +112,6 @@ def menu():
 
 while True:      
     menu()
-    
+    print("Loading...")
+    time.sleep(3)
+    os.system('cls')
