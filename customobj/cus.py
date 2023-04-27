@@ -3,9 +3,9 @@
 # 4 / 26 / 2023
 #Name: Zayed
 #Date: 4/14/2023
-#Basic PyGame Setup Code
+#Custom objects code
 import pygame,sys
-
+from movement import Move_Object
 pygame.init()
 
 #Game Setup
@@ -14,18 +14,16 @@ fpsClock = pygame.time.Clock()
 WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 500
 
+
 #Setup of Starting objects
 window = pygame.display.set_mode((WINDOW_WIDTH,WINDOW_HEIGHT), pygame.HWSURFACE)
 pygame.display.set_caption("Maze")
-img_pac = pygame.image.load('pac.png') #with .png or .jpb included in the name
-img_portal = pygame.image.load('portal.gif')
-img_portal = pygame.transform.scale(img_portal, (45, 45))
-img_pac = pygame.transform.scale(img_pac, (25, 25))  #resize image Where 35 ,35 is the size, (x,y)
-font = pygame.font.SysFont('Consolas', 30)
-king_x=10
-king_y=10
+move_pac = Move_Object(100, 100, 35, 35, 'pac.png')
+move_portal = Move_Object(100, 100, 35, 35, 'portal.gif')
+move_pac_group = pygame.sprite.Group()
 speed=3
 done =  False
+
 
 def collision(object1, object2):
     return object1.colliderect(object2)
@@ -73,6 +71,7 @@ def display():
             object_draw_name26, object_draw_name27, object_draw_name28, object_draw_name29]    
     #gridHelp(window,WINDOW_WIDTH,WINDOW_HEIGHT)  
 
+
 def win():
     window.blit(font.render("You Win", True, (255,255,255)), (250, 250))
     exit = window.blit(font.render("Exit?", True, (255,255,255)), (250, 200))
@@ -89,6 +88,7 @@ def win():
                 king_y=10
                 done = False
                 display()
+
 
 def gridHelp(window,WINDOW_WIDTH,WINDOW_HEIGHT):
         spacer = 10
@@ -138,5 +138,3 @@ while True:
          
     pygame.display.update() #update the display
     fpsClock.tick(fps) #speed of redraw
-
-
