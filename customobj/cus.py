@@ -1,9 +1,7 @@
-#Made by Zayed
-#Custom objects
-# 4 / 26 / 2023
 #Name: Zayed
 #Date: 4/14/2023
 #Custom objects code
+
 import pygame,sys
 from movement import Move_Object
 pygame.init()
@@ -21,8 +19,10 @@ pygame.display.set_caption("Maze")
 move_pac = Move_Object(100, 100, 35, 35, 'pac.png')
 move_portal = Move_Object(100, 100, 35, 35, 'portal.gif')
 move_pac_group = pygame.sprite.Group()
+move_pac_group.add(move_pac)
+font = pygame.font.SysFont('Consolas', 30)
 speed=3
-done =  False
+done = False
 
 
 def collision(object1, object2):
@@ -61,14 +61,14 @@ def display():
     object_draw_name27=pygame.draw.rect(window,(6,57,112),(170, 340,10,110))
     object_draw_name28=pygame.draw.rect(window,(6,57,112),(70,230,10,400))
     object_draw_name29=pygame.draw.rect(window,(6,57,112),(240,230,150,10))
-    pac=window.blit(img_pac,(king_x, king_y))
-    portal = window.blit(img_portal,(445, 440, 450, 440))
+    move_pac_group.draw(window)
     objects=[object_draw_name, object_draw_name2, object_draw_name3, object_draw_name4, object_draw_name5,
             object_draw_name6, object_draw_name7, object_draw_name8, object_draw_name9, object_draw_name10,
             object_draw_name11, object_draw_name12, object_draw_name13, object_draw_name14, object_draw_name15,
             object_draw_name16, object_draw_name17, object_draw_name18, object_draw_name19, object_draw_name20,
             object_draw_name21, object_draw_name22, object_draw_name23, object_draw_name24, object_draw_name25,
-            object_draw_name26, object_draw_name27, object_draw_name28, object_draw_name29]    
+            object_draw_name26, object_draw_name27, object_draw_name28, object_draw_name29] 
+       
     #gridHelp(window,WINDOW_WIDTH,WINDOW_HEIGHT)  
 
 
@@ -109,32 +109,6 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-   
-    if done == False:
-   # dic name--True=1----False=0----->Creating a dictionary that takes a true and false and retuns a 1 and 0 respectively
-        t_f_list = {True : 1, False: 0}
-        #value name---pygame check if keys down---->Create a variable that is set to all the key values to see if it is up or down via True and False respectively
-        key_input = pygame.key.get_pressed()
-        #x-var---dic name-value name-----key Left---speed value--dic name-value name------key Right---speed value      
-        movex = (t_f_list[key_input[pygame.K_LEFT]] * -speed) + (t_f_list[key_input[pygame.K_RIGHT]] * speed)
-        #y-var---dic name-value name-----key Up---speed value--dic name-value name------key Down---speed value
-        movey = (t_f_list[key_input[pygame.K_UP]] * -speed) + (t_f_list[key_input[pygame.K_DOWN]] * speed)
-        #x-location + x-speed = new x-location
-        king_x += movex
-        #y-location + y-speed = new y-location
-        king_y += movey    
-   
-    display()  
-   
-    for wall in objects:
-        if collision(wall, pac):
-           king_x -= movex
-           king_y -= movey
-           display()
-   
-    if collision(pac,portal):
-        done = True
-        win()      
-         
+    move_pac.key_press(5)     
     pygame.display.update() #update the display
     fpsClock.tick(fps) #speed of redraw
