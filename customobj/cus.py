@@ -72,7 +72,7 @@ def display():
     #gridHelp(window,WINDOW_WIDTH,WINDOW_HEIGHT)  
 
 
-def win():
+'''def win():
     window.blit(font.render("You Win", True, (255,255,255)), (250, 250))
     exit = window.blit(font.render("Exit?", True, (255,255,255)), (250, 200))
     playagn = window.blit(font.render("Play Again?", True, (255,255,255)), (250, 300))
@@ -88,7 +88,7 @@ def win():
                 king_y=10
                 done = False
                 display()
-
+'''
 
 def gridHelp(window,WINDOW_WIDTH,WINDOW_HEIGHT):
         spacer = 10
