@@ -17,3 +17,4 @@ class Move_Object(pygame.sprite.Sprite):
         self.rect.x += self.movex
         #y-location + y-speed = new y-location
         self.rect.y += self.movey
+   
