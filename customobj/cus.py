@@ -17,22 +17,21 @@ WINDOW_HEIGHT = 500
 #Setup of Starting objects
 window = pygame.display.set_mode((WINDOW_WIDTH,WINDOW_HEIGHT), pygame.HWSURFACE)
 pygame.display.set_caption("Maze")
+walls = pygame.sprite.Group()
+walls.add(Background(0,0,WINDOW_WIDTH,WINDOW_HEIGHT,'maze.png'))
+man_x = 100
+man_y = 100
+speed = 5
 
-move_pac = Move_Object(100, 100, 35, 35, 'pac.png')
+move_pac = Move_Object(man_x, man_y, 35, 35, 'pac.png')
 move_pac_group = pygame.sprite.Group()
 move_pac_group.add(move_pac)
 
 
-walls = pygame.sprite.Group()
-walls.add(Background(WINDOW_WIDTH,WINDOW_HEIGHT,'maze.png'))
-speed = 5
-
-def collision(object1, object2):
-    return object1.colliderect(object2)
-
+def collision(move_pac_group, walls):
+    return move_pac_group.colliderect(walls)
 
 def display():
-    global objects, pac, portal
     window.fill((255,255,255)) #White background
     walls.draw(window)
     move_pac_group.draw(window)   
@@ -68,7 +67,7 @@ def gridHelp(window,WINDOW_WIDTH,WINDOW_HEIGHT):
             pygame.draw.line(window,(255,0,0),(gridX,0),(gridX,WINDOW_HEIGHT))
         for gridY in range(0, WINDOW_HEIGHT, spacer):
             pygame.draw.line(window,(255,0,0),(0,gridY),(WINDOW_WIDTH,gridY))    
-           
+
 display()
 while True:
     for event in pygame.event.get():
