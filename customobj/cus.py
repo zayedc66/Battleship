@@ -19,19 +19,16 @@ window = pygame.display.set_mode((WINDOW_WIDTH,WINDOW_HEIGHT), pygame.HWSURFACE)
 pygame.display.set_caption("Maze")
 walls = pygame.sprite.Group()
 walls.add(Background(0,0,WINDOW_WIDTH,WINDOW_HEIGHT,'maze.png'))
-man_x = 24
-man_y = 25
-speed = 3
+man_x = 15
+man_y = 10
+
 font = pygame.font.SysFont('Consolas', 30)
-'''img_portal = pygame.image.load('portal.png')
-img_portal = pygame.transform.scale(img_portal, (25, 25))'''
 
-
-move_pac = Move_Object(man_x, man_y, 25, 25, 'pac.png')
+move_pac = Move_Object(man_x, man_y, 20, 20, 'pac.png')
 move_pac_group = pygame.sprite.Group()
 move_pac_group.add(move_pac)
 
-endobj = Move_Object(455, 455, 25, 25, 'portal.png')
+endobj = Move_Object(470, 475, 25, 25, 'portal.png')
 endobj_group = pygame.sprite.Group()
 endobj_group.add(endobj)
 
@@ -46,7 +43,6 @@ def display():
     endobj_group.draw(window)
     #gridHelp(window,WINDOW_WIDTH,WINDOW_HEIGHT)  
 
-
 def win():
     window.blit(font.render("You Win", True, (255,255,255)), (250, 250))
     exit = window.blit(font.render("Exit?", True, (255,255,255)), (250, 200))
@@ -59,12 +55,9 @@ def win():
                 sys.exit()
             if playagn.collidepoint(pos):
                 global man_y, man_x, done
-                man_x=10
-                man_y=10
+                move_pac 
                 done = False
                 display()
-
-
 
 
 def gridHelp(window,WINDOW_WIDTH,WINDOW_HEIGHT):
@@ -89,8 +82,9 @@ while True:
             sys.exit()
     if collision(move_pac.rect, endobj.rect):
         done = True
-        win()      
-    move_pac.key_press(5)
+        win()
+    if done == False:    
+        move_pac.key_press(3)
     if pygame.sprite.spritecollide(move_pac, walls, False, collided=pygame.sprite.collide_mask):
         move_pac.rect.x-=move_pac.movex
         move_pac.rect.y-=move_pac.movey
