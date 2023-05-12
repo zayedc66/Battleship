@@ -55,7 +55,8 @@ def win():
                 sys.exit()
             if playagn.collidepoint(pos):
                 global man_y, man_x, done
-                move_pac 
+                move_pac.rect.x = 15
+                move_pac.rect.y =  10
                 done = False
                 display()
 
