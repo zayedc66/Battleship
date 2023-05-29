@@ -19,12 +19,11 @@ window = pygame.display.set_mode((WINDOW_WIDTH,WINDOW_HEIGHT), pygame.HWSURFACE)
 pygame.display.set_caption("Maze")
 walls = pygame.sprite.Group()
 walls.add(Background(0,0,WINDOW_WIDTH,WINDOW_HEIGHT,'maze.png'))
-man_x = 15
-man_y = 10
+
 
 font = pygame.font.SysFont('Consolas', 30)
 
-move_pac = Move_Object(man_x, man_y, 20, 20, 'pac.png')
+move_pac = Move_Object(15, 10, 20, 20, 'pac.png')
 move_pac_group = pygame.sprite.Group()
 move_pac_group.add(move_pac)
 
